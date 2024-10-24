@@ -142,5 +142,3 @@ const body = document.getElementById('body') as HTMLBodyElement;
 colorPicker.addEventListener('input', handleColorChange);
 
 
-
-  
