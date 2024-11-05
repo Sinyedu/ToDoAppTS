@@ -4,7 +4,7 @@
         branches:
           - main
 
-  job: 
+  jobs: 
     integration-delivery: 
       runs-on: ubuntu-latest
       environment: Test
@@ -16,3 +16,6 @@
 
         name: Install Dependencies
         run: npm install
+
+        name: Build site
+        run: npm run build
