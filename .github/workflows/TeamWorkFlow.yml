@@ -1,4 +1,4 @@
-name: TeamWorkFlow
+name: TeamFlow
 on:
   push:
     branches:
