@@ -47,19 +47,17 @@ jobs:
           name: dist
           path: dist/
 
-  deployment: 
+
+  deployment:
     needs: integration-delivery
     runs-on: ubuntu-latest
     environment: Live
-    steps: 
-      - name: Download artifacts
+    steps:
+      - name: Load artifacts
         uses: actions/download-artifact@v3
         with:
           name: dist
           path: dist/
-          
-      - name: Checkout code
-        uses: actions/checkout@v3
 
       - name: FTP deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
