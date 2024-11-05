@@ -41,11 +41,25 @@ jobs:
       - name: Run tests
         run: testcafe chromium:headless test/*
 
+      - name: Store artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
+
   deployment: 
     needs: integration-delivery
     runs-on: ubuntu-latest
     environment: Live
     steps: 
+      - name: Load artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist/
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: FTP deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
@@ -54,3 +68,9 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: live/todo/
           local-dir: dist/
+
+      - name: Store artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
