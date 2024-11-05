@@ -2,7 +2,7 @@ import { Selector } from 'testcafe';
 
 // Testing if you can add a task to the list
 fixture ("Adding a task to the list")
-    .page("http://localhost:5173/");
+    .page("https://test.museum-trapholt.dk/todo/");
 
 test("Adding a task", async t => {
     await t 
