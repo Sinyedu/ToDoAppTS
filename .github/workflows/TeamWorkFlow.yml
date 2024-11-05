@@ -1,21 +1,22 @@
-    name: TeamWorkFlow
-    on:
-      push:
-        branches:
-          - main
+name: TeamWorkFlow
+on:
+  push:
+    branches:
+      - main
 
-  jobs: 
-    integration-delivery: 
-      runs-on: ubuntu-latest
-      environment: Test
-      container: 
-        image: node
-        steps: 
-        name: Checkout Code
+jobs: 
+  integration-delivery: 
+    runs-on: ubuntu-latest
+    environment: Test
+    container: 
+      image: node
+      
+    steps: 
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-        name: Install Dependencies
+      - name: Install Dependencies
         run: npm install
 
-        name: Build site
+      - name: Build site
         run: npm run build
