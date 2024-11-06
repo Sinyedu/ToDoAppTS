@@ -248,3 +248,9 @@ small {
   color: red;
   display: none;
 }
+
+.category {
+  color: #888;
+  font-size:smaller;
+  margin-left: 5px;
+}
