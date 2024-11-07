@@ -86,7 +86,7 @@ const toggleAllTodos = (): void => {
     completed: !allCompleted // Toggle all to the opposite state
   }))
 
-  renderTodos() // Re-render the todo list
+  renderTodos()
 }
 
 const addRemoveButtonListener = (li: HTMLLIElement, id: number) => {
