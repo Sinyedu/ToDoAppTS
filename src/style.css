@@ -253,4 +253,45 @@ small {
   color: #888;
   font-size:smaller;
   margin-left: 5px;
+  
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+/* Dark theme styles */
+body.dark-mode {
+  color: #f1f1f1;
+  background-color: #333;
+}
+
+.container {
+  padding: 1em;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.container.dark-mode {
+  background-color: #444;
+}
+
+
+/* Theme switch styling */
+.theme-switch {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.theme-switch label {
+  margin-right: 0.5em;
+  font-size: 1em;
+}
+
+body.dark-mode h1 {
+  color: #f1f1f1;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }

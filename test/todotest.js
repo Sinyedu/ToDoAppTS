@@ -29,3 +29,9 @@ await t
 
 });
 
+
+test ("Dark theme toggle", async t => {
+    await t
+    .click ('#theme-toggle')
+    .expect (Selector('body').hasClass('dark-mode')).ok();
+});
