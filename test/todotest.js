@@ -38,22 +38,38 @@ test ("Dark theme toggle", async t => {
     .expect (Selector('body').hasClass('dark-mode')).notOk();
 });
 
-test ("Testing category selector", async t => {
-    await t
-        .typeText('#todo-input', 'Test task')
-        .click('#category-select')
-        .click('#category-select > option:nth-child(2)')
-        .click('#addbutton')
-        .expect (Selector('span').innerText).contains('Home');
+import { Selector } from 'testcafe';
 
+test("Testing category selection for 'Living'", async t => {
+    await t
+        .typeText('#todo-input', 'Buy furniture')
+        .click('#category-select')
+        .click('#category-select option[value="Living"]') 
+        .click('#addbutton');
+
+
+    const lastTodoItem = Selector('#todo-list li').nth(-1);
+    await t.expect(lastTodoItem.find('.category').innerText).eql('Living');
 });
 
-test ("Testing category selector v2.0", async t => {
+test("Testing category selection for 'Others'", async t => {
     await t
-        .typeText('#todo-input', 'Test task2')
+        .typeText('#todo-input', 'Book tickets')
         .click('#category-select')
-        .click('#category-select > option:nth-child(3)')
-        .click('#addbutton')
-        .expect (Selector('span').innerText).contains('Others');
+        .click('#category-select option[value="Others"]')
+        .click('#addbutton');
 
+    const lastTodoItem = Selector('#todo-list li').nth(-1);
+    await t.expect(lastTodoItem.find('.category').innerText).eql('Others');
+});
+
+test("Testing category selection for 'Groceries'", async t => {
+    await t
+        .typeText('#todo-input', 'Buy milk')
+        .click('#category-select')
+        .click('#category-select option[value="Groceries"]') 
+        .click('#addbutton');
+
+    const lastTodoItem = Selector('#todo-list li').nth(-1);
+    await t.expect(lastTodoItem.find('.category').innerText).eql('Groceries');
 });
