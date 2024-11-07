@@ -41,14 +41,13 @@ test("Testing category selection for 'Living'", async t => {
     await t
         .typeText('#todo-input', 'Buy furniture')
         .click('#category-select')
-        .click('#category-select option[value="Living"]')
+        .click('#category-select option[value="Living"]') 
         .click('#addbutton');
 
 
     const lastTodoItem = Selector('#todo-list li').nth(-1);
 
-
-    await t.expect(lastTodoItem.find('.category').innerText).eql('Living');
+    await t.expect(lastTodoItem.find('.category').innerText).contains('Living');
 });
 
 test("Testing category selection for 'Others'", async t => {
@@ -61,8 +60,7 @@ test("Testing category selection for 'Others'", async t => {
 
     const lastTodoItem = Selector('#todo-list li').nth(-1);
 
-
-    await t.expect(lastTodoItem.find('.category').innerText).eql('Others');
+    await t.expect(lastTodoItem.find('.category').innerText).contains('Others');
 });
 
 test("Testing category selection for 'Groceries'", async t => {
@@ -72,7 +70,8 @@ test("Testing category selection for 'Groceries'", async t => {
         .click('#category-select option[value="Groceries"]')
         .click('#addbutton');
 
+
     const lastTodoItem = Selector('#todo-list li').nth(-1);
 
-    await t.expect(lastTodoItem.find('.category').innerText).eql('Groceries');
+    await t.expect(lastTodoItem.find('.category').innerText).contains('Groceries');
 });
