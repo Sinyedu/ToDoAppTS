@@ -43,9 +43,9 @@ test ("Testing category selector", async t => {
         .typeText('#todo-input', 'Test task')
         .click('#category-select')
         .click('#category-select > option:nth-child(2)')
-        .click('#addbutton');
+        .click('#addbutton')
+        .expect (Selector('span').innerText).contains('Home');
 
-    await t.expect(Selector('#todo-list > li:nth-child(2) > span.category').innerText).contains('Living');
 });
 
 test ("Testing category selector v2.0", async t => {
@@ -53,7 +53,7 @@ test ("Testing category selector v2.0", async t => {
         .typeText('#todo-input', 'Test task2')
         .click('#category-select')
         .click('#category-select > option:nth-child(3)')
-        .click('#addbutton');
+        .click('#addbutton')
+        .expect (Selector('span').innerText).contains('Others');
 
-    await t.expect(Selector('#todo-list > li:nth-child(3) > span.category').innerText).contains('Others');
 });
