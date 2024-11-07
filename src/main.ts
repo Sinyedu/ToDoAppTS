@@ -130,15 +130,20 @@ const clearCompletedTodos = (): void => {
 clearCompletedButton.addEventListener('click', clearCompletedTodos)
 
 
-
-const handleColorChange = (event: Event): void => {
-  const target = event.target as HTMLInputElement;
-  if (target && body) {
-    body.style.backgroundColor = target.value;
-  }
-}
-const colorPicker = document.getElementById('colorPicker') as HTMLInputElement;
+const themeToggle = document.getElementById('theme-toggle') as HTMLInputElement;
 const body = document.getElementById('body') as HTMLBodyElement;
-colorPicker.addEventListener('input', handleColorChange);
 
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-mode');
+  themeToggle.checked = true;
+}
 
+themeToggle.addEventListener('change', () => {
+  if (themeToggle.checked) {
+    body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    body.classList.remove('dark-mode');
+    localStorage.setItem('theme', 'light');
+  }
+});
