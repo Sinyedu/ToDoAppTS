@@ -1,6 +1,5 @@
 import { Selector } from 'testcafe';
 
-// Testing if you can add a task to the list
 fixture ("Adding a task to the list")
     .page("https://test.museum-trapholt.dk/todo/");
 
