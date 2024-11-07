@@ -44,5 +44,18 @@ test ("Testing category selector", async t => {
     .click('#category-select')
     .click ('#category-select > option:nth-child(2)')
     .click ('#addbutton')
+    expect(Selector('li').innerText).contains('Test task', 'Category: Living')
+}
+)
+
+
+test ("Testing category selector v2.0" , async t => {
+
+    await t
+    .typeText('#todo-input', 'Test task2')
+    .click('#category-select')
+    .click ('#category-select > option:nth-child(3)')
+    .click ('#addbutton')
+    expect(Selector('li').innerText).contains('Test task2', 'Category: Others')
 }
 )
