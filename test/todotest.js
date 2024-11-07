@@ -38,8 +38,6 @@ test ("Dark theme toggle", async t => {
     .expect (Selector('body').hasClass('dark-mode')).notOk();
 });
 
-import { Selector } from 'testcafe';
-
 test("Testing category selection for 'Living'", async t => {
     await t
         .typeText('#todo-input', 'Buy furniture')
