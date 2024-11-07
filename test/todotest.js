@@ -54,10 +54,10 @@ test("Testing category selection for 'Others'", async t => {
         .typeText('#todo-input', 'Book tickets')
         .click('#category-select')
         .click('#category-select option[value="Others"]')
-        .click('#addbutton');
-
+        .click('#addbutton')
+        .expect(lastTodoItem.find('.category').innerText).eql('Others');
     const lastTodoItem = Selector('#todo-list li').nth(-1);
-    await t.expect(lastTodoItem.find('.category').innerText).eql('Others');
+
 });
 
 test("Testing category selection for 'Groceries'", async t => {
@@ -65,8 +65,9 @@ test("Testing category selection for 'Groceries'", async t => {
         .typeText('#todo-input', 'Buy milk')
         .click('#category-select')
         .click('#category-select option[value="Groceries"]') 
-        .click('#addbutton');
+        .click('#addbutton')
+        .expect(lastTodoItem.find('.category').innerText).eql('Groceries');
 
     const lastTodoItem = Selector('#todo-list li').nth(-1);
-    await t.expect(lastTodoItem.find('.category').innerText).eql('Groceries');
+
 });
