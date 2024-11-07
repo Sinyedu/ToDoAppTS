@@ -249,12 +249,11 @@ small {
   display: none;
 }
 
-
-
-
-
-
-
+.category {
+  color: #888;
+  font-size:smaller;
+  margin-left: 5px;
+  
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
   color: #333;

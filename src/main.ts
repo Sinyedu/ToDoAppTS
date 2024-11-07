@@ -2,7 +2,8 @@ interface Todo {
   id: number,
   title: string,
   completed: boolean,
-  createdAt: Date
+  createdAt: Date,
+  category: 'Groceries' | 'Living' | 'Others';
 }
 
 // Step 2: Initialize the todos array
@@ -14,18 +15,20 @@ const todoList = document.getElementById('todo-list') as HTMLUListElement
 const todoForm = document.querySelector('.todo-form') as HTMLFormElement
 const clearCompletedButton = document.getElementById('clear-completed-btn') as HTMLButtonElement
 const toggleAllButton = document.getElementById('toggle-all-btn') as HTMLButtonElement
+const categorySelect = document.getElementById('category-select') as HTMLSelectElement;
 
-// Step 4: Create a function to add a new todo
 const addTodo = (text: string): void => {
+  const selectedCategory = categorySelect.value as 'Groceries' | 'Living' | 'Others'; // Get selected category
   const newTodo: Todo = {
     id: Date.now(),
     title: text,
     completed: false,
-    createdAt: new Date()
-  }
-  todos.push(newTodo)
-  renderTodos()
-}
+    createdAt: new Date(),
+    category: selectedCategory // Add category to new todo
+  };
+  todos.push(newTodo);
+  renderTodos();
+};
 // Function to toggle a single todo's completed status
 const toggleTodo = (id: number): void => {
   todos = todos.map(todo =>
@@ -33,35 +36,35 @@ const toggleTodo = (id: number): void => {
   )
   renderTodos()
 }
-
 const renderTodos = (): void => {
-  todoList.innerHTML = ''
+  todoList.innerHTML = '';
 
   todos.forEach(todo => {
-    const li = document.createElement('li')
-    li.className = 'todo-item'
+    const li = document.createElement('li');
+    li.className = 'todo-item';
 
     if (todo.completed) {
-      li.classList.add('completed')
+      li.classList.add('completed');
     }
 
-    const formattedDate = todo.createdAt.toLocaleString()
+    const formattedDate = todo.createdAt.toLocaleString();
 
     li.innerHTML = `
       <input type="checkbox" ${todo.completed ? 'checked' : ''} />
       <span class="spancolor">${todo.title}</span> 
       <small>Created at: ${formattedDate}</small>
+      <span class="category">Category: ${todo.category}</span>
       <button class="toggle-btn">Completed</button>
       <button class="remove-btn">Remove</button>
       <button id="editBtn">Edit</button>
-    `
-    
-    addRemoveButtonListener(li, todo.id)
-    addToggleListener(li, todo.id)
-    addEditButtonListener(li, todo.id)
-    todoList.appendChild(li)
-  })
-}
+    `;
+
+    addRemoveButtonListener(li, todo.id);
+    addToggleListener(li, todo.id);
+    addEditButtonListener(li, todo.id);
+    todoList.appendChild(li);
+  });
+};
 
 renderTodos()
 
