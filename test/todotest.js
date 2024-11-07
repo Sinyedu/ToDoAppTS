@@ -35,3 +35,16 @@ test ("Dark theme toggle", async t => {
     .click ('#theme-toggle')
     .expect (Selector('body').hasClass('dark-mode')).ok();
 });
+
+test ("Testing category selector", async t => {
+    await t
+    .typeText ('#todo-input', 'Test task')
+    .click ('#category-select')
+    .expect (Selector('#category-select').value).eql('Groceries')
+    .expect (Selector('#category-select').value).eql('Living')
+    .expect (Selector('#category-select').value).eql('Others')
+    .click ('#category-select > option:nth-child(2)')
+    .click ('#addbutton')
+
+}
+)
