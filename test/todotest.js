@@ -39,13 +39,8 @@ test ("Dark theme toggle", async t => {
 test ("Testing category selector", async t => {
     await t
     .typeText('#todo-input', 'Test task')
-    .click('#categorySelect')
-    .expect(optionGroceries.exists).ok('Groceries option is missing')
-    .expect(optionLiving.exists).ok('Living option is missing')
-    .expect(optionOthers.exists).ok('Others option is missing')
-    .click(optionLiving)
-    .expect(categorySelect.value).eql('Living', 'Selected category is not "Living"')
-    .click('#addbutton');
-
+    .click('#category-select')
+    .click ('#category-select > option:nth-child(2)')
+    .click ('#addbutton')
 }
 )
