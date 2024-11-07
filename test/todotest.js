@@ -40,22 +40,20 @@ test ("Dark theme toggle", async t => {
 
 test ("Testing category selector", async t => {
     await t
-    .typeText('#todo-input', 'Test task')
-    .click('#category-select')
-    .click ('#category-select > option:nth-child(2)')
-    .click ('#addbutton')
-    .expect(Selector('li').innerText).contains('#todo-list > li:nth-child(2) > span.category')
-}
-)
+        .typeText('#todo-input', 'Test task')
+        .click('#category-select')
+        .click('#category-select > option:nth-child(2)')
+        .click('#addbutton');
 
+    await t.expect(Selector('#todo-list > li:nth-child(2) > span.category').innerText).contains('Living');
+});
 
-test ("Testing category selector v2.0" , async t => {
-
+test ("Testing category selector v2.0", async t => {
     await t
-    .typeText('#todo-input', 'Test task2')
-    .click('#category-select')
-    .click ('#category-select > option:nth-child(3)')
-    .click ('#addbutton')
-    .expect(Selector('li').innerText).contains('#todo-list > li:nth-child(3) > span.category')
-}
-)
+        .typeText('#todo-input', 'Test task2')
+        .click('#category-select')
+        .click('#category-select > option:nth-child(3)')
+        .click('#addbutton');
+
+    await t.expect(Selector('#todo-list > li:nth-child(3) > span.category').innerText).contains('Others');
+});
