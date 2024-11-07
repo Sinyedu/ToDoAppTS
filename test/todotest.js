@@ -33,7 +33,9 @@ await t
 test ("Dark theme toggle", async t => {
     await t
     .click ('#theme-toggle')
-    .expect (Selector('body').hasClass('dark-mode')).ok();
+    .expect (Selector('body').hasClass('dark-mode')).ok()
+    .click ('#theme-toggle')
+    .expect (Selector('body').hasClass('dark-mode')).notOk();
 });
 
 test ("Testing category selector", async t => {
