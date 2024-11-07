@@ -31,7 +31,7 @@ await t
 
 
 test ("Dark theme toggle", async t => {
-    click('#theme-toggle')
-    expect(Selector('body').hasClass('dark-mode'))
-}
-)
+    await t
+    .click ('#theme-toggle')
+    .expect (Selector('body').hasClass('dark-mode')).ok();
+});
