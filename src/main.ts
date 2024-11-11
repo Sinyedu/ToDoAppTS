@@ -83,7 +83,7 @@ const toggleAllTodos = (): void => {
 
   todos = todos.map(todo => ({
     ...todo,
-    completed: !allCompleted // Toggle all to the opposite state
+    completed: !allCompleted
   }))
 
   renderTodos()
